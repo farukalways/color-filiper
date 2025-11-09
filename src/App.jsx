@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const App = () => {
-  const [color, setColor] = useState("#969696");
+  const [color, setColor] = useState("#257e4b");
   const [colorType, setColorType] = useState("HEX");
   const [copyied, setCopied] = useState("Copy");
 
@@ -37,7 +37,7 @@ const App = () => {
   };
 
   const handleColorReset = () => {
-    setColor("#969696");
+    setColor("#257e4b");
   };
 
   const handleCopyColor = () => {
@@ -50,44 +50,52 @@ const App = () => {
 
   return (
     <div
-      className="w-10/12 mx-auto h-[100vh] bg- flex items-center justify-center"
+      className="min-h-screen flex items-center justify-center transition-all duration-300"
       style={{ backgroundColor: color }}
     >
-      <div className="w-64 h-auto py-10">
+      <div className="w-80 bg-white/10 backdrop-blur-xl border border-white/40 rounded-3xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+        {/* Select Box */}
         <select
-          className="border border-black rounded-xl mb-5 py-3 px-5 outline-none"
+          className="w-full mb-6 py-3 px-5 rounded-xl bg-black/40 text-white font-semibold outline-none border border-white/30"
           value={colorType}
           onChange={handleColorTypeChange}
         >
-          <option value="HEX">HEX</option>
-          <option value="RGB">REG</option>
+          <option className="text-black" value="HEX">
+            HEX
+          </option>
+          <option className="text-black" value="RGB">
+            RGB
+          </option>
         </select>
 
-        <div className="flex gap-3 mb-5">
-          <p className="border rounded-xl border-black px-3 py-2 text-white">
+        {/* Color + Copy */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="bg-black/50 text-white px-4 py-2 rounded-xl text-sm font-semibold border border-white/30">
             {color}
           </p>
 
           <button
-            className="text-white px-4 p-2 rounded-2xl bg-green-800"
+            className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl font-semibold shadow-lg transition"
             onClick={handleCopyColor}
           >
             {copyied}
           </button>
         </div>
 
-        <div className="flex gap-5">
+        {/* Buttons */}
+        <div className="flex gap-5 justify-center">
           <button
             onClick={handleColorChange}
-            className="text-white px-4 p-2 rounded-2xl bg-green-800"
+            className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-semibold shadow-lg transition"
           >
-            Color Change
+            Change
           </button>
+
           <button
             onClick={handleColorReset}
-            className="text-white px-4 p-2 rounded-2xl bg-green-800"
+            className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-xl font-semibold shadow-lg transition"
           >
-            Reset Color
+            Reset
           </button>
         </div>
       </div>
